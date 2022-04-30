@@ -41,7 +41,7 @@ const PacientesController = {
                     id
                 }
             })
-            res.status(204)
+            res.status(204).json("")
 
             if (!pacienteId){
                 return res.status(404).json('Não existe paciente com o id ' +id)
@@ -56,14 +56,14 @@ const PacientesController = {
         const { id } = req.params
         try {
             const { nome, email, idade} = req.body
-            const atualizarPaciente = await Pacientes.Update(
-                {nome:nome, email:email, idade:idade}, 
+            const atualizarPaciente = await Pacientes.update(
+                {nome, email, idade}, 
                 {
                 where: {
                     id
                 }
             })
-            return res.status(201).json(atualizarPaciente)
+            return res.status(201).json("Paciente atualizado com sucesso")
 
         } catch (error) {
             res.status(400).json("Não foi possivel atualizar o paciente")
