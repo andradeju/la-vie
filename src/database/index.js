@@ -2,7 +2,7 @@ const sequelize = require ('sequelize')
 
 const DB_NAME = 'u959158588_lavieDb'
 const DB_USER = 'u959158588_handson'
-const DB_PASS = ''
+const DB_PASS = 'Xp41grupo7'
 const DB_HOST = '185.201.11.110'
 const DB_PORT = 3306
 const DB_CONFIG = {
