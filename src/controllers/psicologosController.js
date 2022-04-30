@@ -8,7 +8,7 @@ const PsicologosController = {
             const listaDePsicologos = await Psicologos.findAll()
             res.status(200).json(listaDePsicologos)
         } catch (error) {
-            res.send("Não foi possível listar os psicologos")
+            res.json("Não foi possível listar os psicologos")
             console.error(error)
         }
     },
@@ -17,7 +17,7 @@ const PsicologosController = {
         try {
             const psicologoId = await Psicologos.findByPk(id)
             if (!psicologoId){
-                res.status(404).json('Não existe psicologo com o id ' +id)
+                return res.status(404).json('Não existe psicologo com o id ' +id)
             }
             res.status(200).json(psicologoId)
         } catch (error) {
@@ -46,7 +46,7 @@ const PsicologosController = {
             res.status(204)
 
             if (!psicologoId){
-                res.status(404).json('Não existe psicologo com o id ' +id)
+                return res.status(404).json('Não existe psicologo com o id ' +id)
             }
             
         } catch (error) {
