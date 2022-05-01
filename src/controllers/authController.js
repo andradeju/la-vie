@@ -21,7 +21,13 @@ const authController = {
             return res.status(401).json ('Senha Inválida')
         }
 
-        return res.status(201).json ('Usuário Logado')
+        const token = jwt.sign ({
+            id: psicologo.id,
+            email: psicologo.email,
+            nome: psicologo.nome
+        }, secret.key)
+
+        return res.json(token)
     }
 }
 

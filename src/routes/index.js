@@ -5,6 +5,7 @@ const createPsicologosValidation = require("../validation/psicologos/createPsico
 const createPacientesValidation = require('../validation/pacientes/createPacientesValidation')
 const authController = require('../controllers/authController')
 const loginValidation = require('../validation/auth/authLogin')
+const autenticador = require('../middlewares/autenticador')
 const routes = express.Router()
 
 routes.get("/psicologos", PsicologosController.listarPsicologos)

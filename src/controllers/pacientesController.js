@@ -6,6 +6,7 @@ const PacientesController = {
         try {
             const listaDePacientes = await Pacientes.findAll()
             res.status(200).json(listaDePacientes)
+
         } catch (error) {
             res.json("Não foi possível listar dos pacientes")
             console.error(error)
