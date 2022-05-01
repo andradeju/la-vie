@@ -26,13 +26,14 @@ const PsicologosController = {
     },
     async cadastrarPsicologo(req, res){
         try {
-            const { nome, senha, email, apresentacao } = req.body
+            const {nome, senha, email, apresentacao} = req.body
             const novaSenha = bcrypt.hashSync(senha, 10)
             const novoPsicologo = await Psicologos.create({nome, senha: novaSenha, email, apresentacao})
             return res.status(201).json(novoPsicologo)
 
         } catch (error) {
             res.status(400).json("Não foi possivel cadastrar o psicologo")
+            console.log(error)
         }
     },
     async deletarPsicologo(req, res){
