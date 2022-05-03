@@ -1,9 +1,14 @@
-const { Atendimentos } = require("../model");
+const { Atendimentos, Pacientes, Psicologos } = require("../model");
 
 const AtendimentosController = {
     async listarAtendimentos(req, res){
         try{
-            const listaDeAtendimentos = await Atendimentos.findAll()
+            const listaDeAtendimentos = await Atendimentos.findAll(
+                {include: [Pacientes, Psicologos],
+                attributes: {
+                    exclude: ['senha']
+                }}
+            )
             res.status(200).json(listaDeAtendimentos)
         } catch (error) {
             res.json("Não foi possível listar os atendimentos")
@@ -23,9 +28,10 @@ const AtendimentosController = {
         }
     },
     async cadastrarAtendimento(req, res) {
+        const token = req.auth.id
         try {
-            const { paciente_id, data_atendimento, observacao, psicologo_id } = req.body;
-            const novoAtendimento = await Atendimentos.create({paciente_id, data_atendimento, observacao, psicologo_id});
+            const { paciente_id, data_atendimento, observacao } = req.body;
+            const novoAtendimento = await Atendimentos.create({paciente_id, data_atendimento, observacao, psicologo_id: token});
             return res.status(201).json(novoAtendimento);
         } catch (error) {
             res.status(400).json('Não foi possivel cadastrar o atendimento');

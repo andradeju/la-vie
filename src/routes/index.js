@@ -26,6 +26,6 @@ routes.post('/login', loginValidation, authController.login)
 
 routes.get('/atendimentos', AtendimentosController.listarAtendimentos)
 routes.get('/atendimentos/:id', AtendimentosController.listarAtendimentoById)
-routes.post('/atendimentos', createAtendimentosValidation,AtendimentosController.cadastrarAtendimento)
+routes.post('/atendimentos', autenticador, createAtendimentosValidation, AtendimentosController.cadastrarAtendimento)
 
 module.exports = routes
