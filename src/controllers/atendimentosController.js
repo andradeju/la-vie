@@ -4,11 +4,10 @@ const AtendimentosController = {
     async listarAtendimentos(req, res){
         try{
             const listaDeAtendimentos = await Atendimentos.findAll(
-                {include: [Pacientes, Psicologos],
-                attributes: {
-                    exclude: ['senha']
-                }}
+                {include: [{model: Pacientes, attributes: ["nome"]}, {model: Psicologos, attributes: ['nome']}],
+                attributes: ['id', 'data_atendimento', 'observacao']}   
             )
+            
             res.status(200).json(listaDeAtendimentos)
         } catch (error) {
             res.json("Não foi possível listar os atendimentos")
