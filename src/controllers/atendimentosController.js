@@ -1,4 +1,4 @@
-const Atendimentos = require("../model/Atendimentos");
+const { Atendimentos } = require("../model");
 
 const AtendimentosController = {
     async listarAtendimentos(req, res){
@@ -28,7 +28,6 @@ const AtendimentosController = {
             const novoAtendimento = await Atendimentos.create({paciente_id, data_atendimento, observacao, psicologo_id});
             return res.status(201).json(novoAtendimento);
         } catch (error) {
-            console.log(error)
             res.status(400).json('Não foi possivel cadastrar o atendimento');
         }
     }
