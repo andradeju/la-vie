@@ -69,7 +69,7 @@ const PsicologosController = {
                         id
                     }
                 })
-                return res.status(201).json('Psicologo atualizado')
+                return res.status(200).json('Psicologo atualizado')
             }else {
                 const atualizarPsicologo = await Psicologos.update(
                     {nome, senha, email, apresentacao}, 
@@ -78,7 +78,7 @@ const PsicologosController = {
                         id
                     }
                 })
-                return res.status(201).json('Psicologo atualizado com sucesso')
+                return res.status(200).json('Psicologo atualizado com sucesso')
             }
 
         } catch (error) {

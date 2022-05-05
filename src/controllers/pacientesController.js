@@ -64,7 +64,7 @@ const PacientesController = {
                     id
                 }
             })
-            return res.status(201).json("Paciente atualizado com sucesso")
+            return res.status(200).json("Paciente atualizado com sucesso")
 
         } catch (error) {
             res.status(400).json("Não foi possivel atualizar o paciente")
