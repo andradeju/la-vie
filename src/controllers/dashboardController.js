@@ -1,13 +1,13 @@
 const { Pacientes, Psicologos, Atendimentos } = require('../model') 
 
-const dasboardControoler = {
+const dashboardControoler = {
     async numerosPacientes(req, res){
         try {
             const nPacientes = await Pacientes.count()
             res.status(200).json(`Existem ${nPacientes} pacientes cadastrados na base de dados`)
 
         } catch (error) {
-            res.json("Não Foi Possível determinar a quantidade de pacientes cadastados")
+            res.json("Não Foi Possível determinar a quantidade de pacientes cadastrados")
             console.error(error)
         }
     },
@@ -53,4 +53,4 @@ const dasboardControoler = {
 
 }
 
-module.exports = dasboardControoler
+module.exports = dashboardControoler

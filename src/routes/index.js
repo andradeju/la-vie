@@ -8,7 +8,7 @@ const createAtendimentosValidation = require("../validation/atendimentos/createA
 const authController = require('../controllers/authController')
 const loginValidation = require('../validation/auth/authLogin')
 const autenticador = require('../middlewares/autenticador')
-const dasboard = require('../controllers/dasboardController')
+const dashboard = require('../controllers/dashboardController')
 const routes = express.Router()
 
 routes.get("/psicologos", PsicologosController.listarPsicologos)
@@ -29,9 +29,9 @@ routes.get('/atendimentos', AtendimentosController.listarAtendimentos)
 routes.get('/atendimentos/:id', AtendimentosController.listarAtendimentoById)
 routes.post('/atendimentos', autenticador, createAtendimentosValidation, AtendimentosController.cadastrarAtendimento)
 
-routes.get('/dasborad/pacientes', dasboard.numerosPacientes)
-routes.get('/dasborad/atendimentos', dasboard.numerosAtendimentos)
-routes.get('/dasborad/psicologos', dasboard.numerosPsicologos)
-routes.get('/dasborad/psicologos/media', dasboard.atendimentoPsicologo)
+routes.get('/dashboard/pacientes', dashboard.numerosPacientes)
+routes.get('/dashboard/atendimentos', dashboard.numerosAtendimentos)
+routes.get('/dashboard/psicologos', dashboard.numerosPsicologos)
+routes.get('/dashboard/psicologos/media', dashboard.atendimentoPsicologo)
 
 module.exports = routes
